@@ -2,20 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+    /* font-family: Arial, sans-serif; */
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .carousel-container {
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
+  /* Slick carousel styles - Import them directly */
+  @import "~slick-carousel/slick/slick.css"; 
+  @import "~slick-carousel/slick/slick-theme.css"; 
+
+
+
+/* Add subtle hover effects to cards */
+.contact-card {
+    transition: all 0.3s ease-in-out;
+  }
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Improve button hover */
+  button {
+    transition: all 0.3s ease-in-out;
+  }
+  button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  
+  h2, h3 {
+    position: relative;
+  }
+  h2::after, h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: black;
+    margin: 8px auto 0;
+  }
+  
+  /* Add spacing between cards */
+  .grid .card {
+    margin-bottom: 12px;
+  }
+  
+  /* Center social icons */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+  }
+  .social-icons a:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+
+  /* carousel-button */
+  /* Fixing button hover issue */
+button {
+    background-color: transparent; 
+    border: none; 
+    outline: none;
+  }
+  
+  button:hover {
+    background-color: transparent; 
+    border: none;
+    outline: none;
+    opacity: 1; 
+  }
+  
+  button:focus {
+    outline: none; 
+    box-shadow: none; 
+  }
+  
