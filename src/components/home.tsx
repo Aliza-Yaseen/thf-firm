@@ -16,6 +16,7 @@ const Home = () => {
             className="relative"
             data-twe-carousel-init
             data-twe-ride="carousel"
+            
         >
             {/* Carousel Indicators */}
             <div

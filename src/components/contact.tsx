@@ -1,5 +1,8 @@
+
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -13,17 +16,25 @@ import {
 import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
-  const form = useRef(null);
+  const form = useRef<HTMLFormElement | null>(null);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration in milliseconds
+      easing: "ease-in-out", // Easing function
+      once: true, // Only animate once
+    });
+  }, []);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "your_service_id", // Replace with your EmailJS Service ID
-        "your_template_id", // Replace with your EmailJS Template ID
+        "your_service_id",
+        "your_template_id",
         form.current!,
-        "your_public_key" // Replace with your EmailJS Public Key
+        "your_public_key"
       )
       .then(
         (result) => {
@@ -40,7 +51,10 @@ export default function ContactPage() {
   return (
     <section className="bg-gray-50 py-16 px-6" id="Contact">
       {/* Heading and Paragraph */}
-      <div className="text-center mb-16">
+      <div
+        className="text-center mb-16"
+        data-aos="fade-up"
+      >
         <h2 className="text-4xl font-bold mb-4 text-black">
           Connect with Our Team
         </h2>
@@ -50,10 +64,12 @@ export default function ContactPage() {
         </p>
       </div>
 
-      {/* 2-Column Layout */}
+      {/* 2-Column Layout Left Side: Contact Form */}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-        {/* Left Side: Contact Form */}
-        <div className="bg-white p-10 rounded-lg shadow-lg">
+        <div
+          className="bg-white p-10 rounded-lg shadow-lg"
+          data-aos="fade-right"
+        >
           <h3 className="text-3xl font-semibold mb-6 text-black">
             Get in Touch with Us
           </h3>
@@ -68,7 +84,7 @@ export default function ContactPage() {
               <input
                 type="text"
                 id="name"
-                name="user_name" // Must match EmailJS template field
+                name="user_name"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                 placeholder="Your name"
                 required
@@ -84,7 +100,7 @@ export default function ContactPage() {
               <input
                 type="email"
                 id="email"
-                name="user_email" // Must match EmailJS template field
+                name="user_email"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                 placeholder="Your email"
                 required
@@ -99,7 +115,7 @@ export default function ContactPage() {
               </label>
               <textarea
                 id="message"
-                name="message" // Must match EmailJS template field
+                name="message"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
                 placeholder="Your message"
                 rows={5}
@@ -116,7 +132,7 @@ export default function ContactPage() {
         </div>
 
         {/* Right Side: Contact Details */}
-        <div>
+        <div data-aos="fade-left">
           <h3 className="text-3xl font-semibold mb-6 text-black">
             Contact Our Team
           </h3>
@@ -169,15 +185,14 @@ export default function ContactPage() {
               <div className="h-10 w-[25%] px-2 flex items-center justify-center bg-gray-900 text-white rounded mr-5">
                 <FaEnvelope className="text-xl text-white" />
               </div>
-              <div>
+              <div className="w-[75%]">
                 <h4 className="font-semibold text-lg text-black">Email</h4>
-                <p className="text-gray-600">info@example.com</p>
+                <p className="text-gray-600 break-words overflow-hidden text-ellipsis">
+                  fahim@thfventures.com
+                </p>
               </div>
             </div>
           </div>
-
-          {/* Light Gray Line */}
-          <div className="w-full h-[1px] bg-gray-200 my-6"></div>
 
           {/* Social Media Section */}
           <div className="mt-6 flex flex-col sm:flex-row sm:justify-between items-center space-y-6 sm:space-y-0">
