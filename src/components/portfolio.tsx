@@ -95,7 +95,7 @@ export default function Portfolio() {
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 p-2 bg-gray-300 text-gray-700 rounded-full hover:bg-gray-400 hover:text-black z-10"
+              className="absolute top-4 right-4 p-2 bg-gray-300 text-gray-700 rounded-md w-12 h-12 font-semibold hover:bg-gray-400 hover:text-black z-10"
             >
               X
             </button>
