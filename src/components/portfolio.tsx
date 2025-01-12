@@ -92,13 +92,16 @@ export default function Portfolio() {
             onClick={(e) => e.stopPropagation()}
             className="relative bg-white w-[90%] p-4 sm:p-6 rounded-2xl shadow-2xl max-h-[90vh] overflow-hidden transform transition-all duration-500 h-auto"
           >
-            {/* Close Button */}
+
+            \{/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 p-2 bg-gray-300 text-gray-700 rounded-md w-12 h-12 font-semibold hover:bg-gray-400 hover:text-black z-10"
+              className="absolute top-4 right-4 p-2 bg-transparent border border-gray-300 text-gray-700 w-8 h-8 flex items-center justify-center rounded-md hover:bg-gray-300 hover:text-black z-10"
             >
               X
             </button>
+
+
 
             {/* Modal Content */}
             <div className="flex flex-wrap max-h-[75vh] overflow-y-auto">
